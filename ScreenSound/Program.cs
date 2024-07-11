@@ -1,6 +1,25 @@
-﻿using ScreenSound.Menus;
+﻿using ScreenSound.Banco;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
+
+try
+{
+    var connection = new Connection();
+    var lista = connection.Listar();
+    
+    if(!lista.Any())
+        Console.WriteLine("nenhum Artista encontrado");
+
+    foreach (var artista in lista)
+        Console.WriteLine($"Id: {artista.Id},Nome: {artista.Nome}, Bio: {artista.Bio}");
+}
+catch (Exception ex)
+{
+    throw ex;
+}
+
+return;
 var ira = new Artista("Ira!", "Banda Ira!");
 Artista beatles = new("The Beatles", "Banda The Beatles");
 
